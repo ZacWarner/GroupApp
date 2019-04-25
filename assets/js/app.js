@@ -29,5 +29,5 @@ $.ajax({
     addr.html("<p>" + response.deals[0].deal.merchant.name + "," + response.deals[0].deal.merchant.address + "," + response.deals[0].deal.merchant.locatlity + "," + response.deals[0].deal.merchant.region + "," + response.deals[0].deal.merchant.country + "-" + response.deals[0].deal.merchant.postal_code);
     dealDiv.append(title, img, addr);
 
-    $(".result").append(dealDiv);
+    $(".carousel").append(dealDiv);
 });
