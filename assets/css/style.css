@@ -7,6 +7,14 @@
 .locations{
     position: static;
 }
-.interests{
+.card-body{
     position: static;
+}
+.top-jumbo{
+    background-color: teal;
+    color: white;
+}
+.bottom-jumbo{
+    background-color: yellowgreen;
+    color: white;
 }
