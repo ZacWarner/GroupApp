@@ -1,3 +1,10 @@
+#body { 
+    background: url(http://www.public-domain-photos.com/free-stock-photos-4/travel/san-diego/san-diego-bay-3.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 #body{
     margin: 10px;
 }
@@ -13,10 +20,12 @@
 .top-jumbo{
     background-color: teal;
     color: white;
+    opacity: 0.4;
 }
 .bottom-jumbo{
-    background-color: yellowgreen;
+    background-color: rgba(113, 43, 153, 0.616);
     color: white;
+    opacity: 0.5;
 }
 /* ================ */
 .slide {
