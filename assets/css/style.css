@@ -10,7 +10,9 @@
 }
 .card{
     margin: 10px;
+    background-color: rgb(69, 41, 223, 0.3);
 }
+
 .locations{
     position: static;
 }
@@ -18,14 +20,14 @@
     position: static;
 }
 .top-jumbo{
-    background-color: teal;
+    background-color: rgb(5, 126, 126, 0.4);
     color: white;
-    opacity: 0.4;
+    
 }
 .bottom-jumbo{
-    background-color: rgba(113, 43, 153, 0.616);
+    background-color: rgba(113, 43, 153, 0.4);
     color: white;
-    opacity: 0.5;
+    
 }
 /* ================ */
 .slide {
