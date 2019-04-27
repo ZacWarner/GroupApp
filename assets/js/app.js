@@ -1,4 +1,5 @@
 var categoryCount = 0;
+var locationCoordinates;
 function populateDealCategory() {
     for (let i = 0; i < dealCategories.length; i++) {
         var newOption = $("<option>");
@@ -80,7 +81,11 @@ $(document).ready(function () {
         var category2 = tmp[1].innerText;
         var category3 = tmp[2].innerText;
 
-        var queryUrl = "https://api.discountapi.com/v2/deals?api_key=nvWHzpcy&query=" + category1 + "+" + category2 + "+" + category3 + "&location=sacramento&radius=5";
+        var queryUrl = "https://api.discountapi.com/v2/deals?api_key=nvWHzpcy&query=" + category1 + "+" + category2 + "+" + category3 + "&location=" + locationCoordinates + "&radius=50";
+
+        console.log("co-ords: " + locationCoordinates + "cat1: " + category1 + "cat2: " + category2 + "cat3: " + category3);
+        console.log(queryUrl);
+
         grabDeals(queryUrl);
     });
 
@@ -122,6 +127,11 @@ $(document).ready(function () {
         //logs destination point.
         console.log(directions.getDestination());
 
+        var destination = directions.getDestination();
+        var destLoc = destination.geometry.coordinates;
+        locationCoordinates = destLoc[1] + "," + destLoc[0];
+        //destLoc is an array with long at destLoc[0] and lat at destLoc[1]
+        console.log(locationCoordinates);
 
     });
 });
