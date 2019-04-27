@@ -81,6 +81,7 @@ $(document).ready(function () {
         var category3 = tmp[2].innerText;
 
         var queryUrl = "https://api.discountapi.com/v2/deals?api_key=nvWHzpcy&query=" + category1 + "+" + category2 + "+" + category3 + "&location=sacramento&radius=5";
+        console.log(queryUrl);
         grabDeals(queryUrl);
     });
 
@@ -121,7 +122,10 @@ $(document).ready(function () {
         console.log(directions.getOrigin());
         //logs destination point.
         console.log(directions.getDestination());
-
+        var destination = directions.getDestination();
+        var destLoc = destination.geometry.coordinates;
+        //destLoc is an array with long at destLoc[0] and lat at destLoc[1]
+        console.log(destLoc);
 
     });
 });
