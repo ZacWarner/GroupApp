@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-
-
     //makes the map
     mapboxgl.accessToken = 'pk.eyJ1IjoiemFjd2FybmVyIiwiYSI6ImNqdXVoNnZjajAxeTc0ZGtkdzVvM3ZwaGgifQ.h2Oz3m2dO3yYJJFosZeAgQ';
     var map = new mapboxgl.Map({
@@ -9,12 +7,7 @@ $(document).ready(function () {
         style: 'mapbox://styles/mapbox/streets-v11'
     });
 
-    //finds locations I like this one.
-    // map.addControl(new MapboxGeocoder({
-    //     accessToken: mapboxgl.accessToken,
-    //     mapboxgl: mapboxgl
-    // }?
-    // Add zoom and rotation controls to the map.
+
     map.addControl(new mapboxgl.NavigationControl());
 
     //locate yourself button
@@ -25,18 +18,6 @@ $(document).ready(function () {
         trackUserLocation: true
     }));
 
-    // // directions this could work too
-    // map.addControl(new MapboxDirections({
-    //     accessToken: mapboxgl.accessToken
-    // }), 'top-left');
-
-
-    //this lets you put a geocoder box outside of map.
-    // var geocoder = new MapboxGeocoder({
-    //     accessToken: mapboxgl.accessToken,
-    //     mapboxgl: mapboxgl
-    // });
-    // document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
     //adds directions box under map
     var directions = new MapboxDirections({
@@ -45,9 +26,16 @@ $(document).ready(function () {
     console.log(directions);
     document.getElementById('directions').appendChild(directions.onAdd(map));
 
+
+    //this will get us the api calls from the tools
     directions.on('route', function (ev) {
+        //gives route api object
         console.log(ev.route);
-        console.log(geojson)
+        //logs the origin point
+        console.log(directions.getOrigin());
+        //logs destination point.
+        console.log(directions.getDestination());
+
 
     });
 
