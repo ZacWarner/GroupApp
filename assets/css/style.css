@@ -1,0 +1,72 @@
+#body { 
+    background: url(http://www.public-domain-photos.com/free-stock-photos-4/travel/san-diego/san-diego-bay-3.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+#body{
+    margin: 10px;
+}
+.card{
+    margin: 10px;
+    background-color: rgb(69, 41, 223, 0.3);
+}
+
+.locations{
+    position: static;
+}
+.card-body{
+    position: static;
+}
+.top-jumbo{
+    background-color: rgb(5, 126, 126, 0.4);
+    color: white;
+    
+}
+.bottom-jumbo{
+    background-color: rgba(113, 43, 153, 0.4);
+    color: white;
+    
+}
+/* ================ */
+.slide {
+    height: 300px;
+}
+.card {
+    position: relative;
+}
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.card:hover .image {
+    opacity: 0.3;
+}
+
+.card:hover .middle {
+    opacity: 0.9;
+}
+
+.text {
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}

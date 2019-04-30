@@ -1,14 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Road Trip Planner</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Slick Stylesheet -->
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- mapBox    -->
+    <script src='https://static-assets.mapbox.com/gl-pricing/dist/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
 </head>
-<body>
+
+<body id="body">
+    <header>
+        <div class="jumbotron jumbotron-fluid top-jumbo">
+            <div class="container">
+                <h1 class="display-4">The Lost Experience, but like...Safe</h1>
+                <p class="lead">Images of people having fun / vacations appear on a timed carousel here</p>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="row cardHolder">
+        <div class="card" style="width: 640px; height: 440px;">
+
+            <div class="card-body">
+                <div id='map' style='width: 600px; height: 400px;'></div>
+            </div>
+        </div>
+        <div class="card" style="width: 21.5rem;">
+
+            <div class="card-body">
+                <div id='directions' class='directions'></div>
+            </div>
+        </div>
+        <!--<div class="card locations" style="width: 18rem;">
+            
+            <div class="card-body">
+                <h5 class="card-title">Endpoints</h5>
+                <p>Map API endpoints go here</p>
+                <br>
+                <a href="#" class="btn btn-primary">Begin Trip</a>
+            </div>
+        </div>-->
+        <div class="card interests" style="width: 18rem; height: 380px;">
+            <div class="card body">
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item item-1">first</li>
+                    <li class="list-group-item item-2">second</li>
+                    <li class="list-group-item item-3">third</li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <select class="form-control form-control-sm category">
+                    <option>--select category--</option>
+                </select>
+                <br>
+                <a href="#" class="btn btn-primary btn-sm" id="find-deals">Find Deals</a>
+                <br>
+            </div>
+        </div>
+    </div>
 
 
-
+    <footer>
+        <div class="jumbotron jumbotron-fluid bottom-jumbo">
+            <div class="container">
+                <h1 class="display-4">Deals</h1>
+                <p class="lead">Tiles related to selected interests populate here, on a carousel</p>
+            </div>
+            <div class="slider">
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Moment JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- Slick JS -->
+    <script type="text/javascript" src="assets/js/slick.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/dealCategories.js"></script>
+    <!-- Map Stuff -->
+    <script
+        src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.js'></script>
+    <link rel='stylesheet'
+        href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.0/mapbox-gl-directions.css'
+        type='text/css' />
+    <script
+        src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet'
+        href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.css'
+        type='text/css' />
 </body>
+
 </html>
