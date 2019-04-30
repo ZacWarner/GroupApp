@@ -6,7 +6,7 @@
     background-size: cover;
   }
 #body{
-    margin: 10px;
+    margin: 3%;
 }
 .card{
     margin: 10px;
@@ -65,7 +65,7 @@
 }
 
 .text {
-    background-color: orange;
+    background-color: rgba(224, 148, 6, 0.644);
     color: white;
     font-size: 16px;
     padding: 16px 32px;
