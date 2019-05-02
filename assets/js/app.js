@@ -81,16 +81,11 @@ $(document).ready(function () {
         var category2 = tmp[1].innerText;
         var category3 = tmp[2].innerText;
 
-<<<<<<< HEAD
-        var queryUrl = "https://api.discountapi.com/v2/deals?api_key=nvWHzpcy&query=" + category1 + "+" + category2 + "+" + category3 + "&location=sacramento&radius=5";
-        console.log(queryUrl);
-=======
         var queryUrl = "https://api.discountapi.com/v2/deals?api_key=nvWHzpcy&query=" + category1 + "+" + category2 + "+" + category3 + "&location=" + locationCoordinates + "&radius=50";
 
         console.log("co-ords: " + locationCoordinates + "cat1: " + category1 + "cat2: " + category2 + "cat3: " + category3);
         console.log(queryUrl);
 
->>>>>>> 48806c16159694d02098544d7ff39e19c51af108
         grabDeals(queryUrl);
     });
 
@@ -131,19 +126,33 @@ $(document).ready(function () {
         console.log(directions.getOrigin());
         //logs destination point.
         console.log(directions.getDestination());
-<<<<<<< HEAD
-        var destination = directions.getDestination();
-        var destLoc = destination.geometry.coordinates;
-        //destLoc is an array with long at destLoc[0] and lat at destLoc[1]
-        console.log(destLoc);
-=======
 
         var destination = directions.getDestination();
         var destLoc = destination.geometry.coordinates;
         locationCoordinates = destLoc[1] + "," + destLoc[0];
         //destLoc is an array with long at destLoc[0] and lat at destLoc[1]
         console.log(locationCoordinates);
->>>>>>> 48806c16159694d02098544d7ff39e19c51af108
 
     });
+
+
+    //constructor for points of deals
+    function marker(coordinates, title, description) {
+        this.type = 'FeatureCollection';
+        this.features = [{
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [coordinates]
+            },
+            properties: {
+                title: title,
+                description: description
+            }
+        }]
+    }
+
+
+    var marker1 = new marker(192115151, "place", "its a place");
+    console.log(marker1);
 });
