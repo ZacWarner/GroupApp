@@ -4,6 +4,7 @@ $(document).ready(function () {
     var category1 = "", category2 = "", category3 = "";
     var locationCoordinates = "38.581021,-121.4939328"; //Setting default to sacramento
     var features = [];
+    var feateresChargeStation = [];
     function populateDealCategory() {
         for (let i = 0; i < dealCategories.length; i++) {
             var newOption = $("<option>");
@@ -148,9 +149,46 @@ $(document).ready(function () {
                     newDiv.append(stationName, stationAddr, stationZip, lineBreak);
 
                     $(".modal-body").append(newDiv);
+
+                    //zacs marker
+                    feateresChargeStation.push({
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [stationsAtBrkpnt[0][0].longitude, stationsAtBrkpnt[0][0].latitude]
+                        },
+                        properties: {
+                            title: stationsAtBrkpnt[i][j].station_name,
+                            description: stationsAtBrkpnt[i][j].street_address,
+                        }
+                    });
+
+
                 }
             }
-        });
+            var geojson = {
+                type: 'FeatureCollection',
+                features: feateresChargeStation,
+            };
+
+            console.log("works")
+            console.log("geojson: " + geojson.features);
+
+            // add markers to map
+            geojson.features.forEach(function (marker) {
+
+                // create a HTML element for each feature
+                var el = document.createElement('div');
+                el.className = 'markerChargeStation';
+
+                // make a marker for each feature and add to the map
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker.geometry.coordinates)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                        .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                    .addTo(map);
+            })
+        })
 
     }
 
