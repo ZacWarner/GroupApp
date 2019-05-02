@@ -70,3 +70,23 @@
     font-size: 16px;
     padding: 16px 32px;
 }
+
+/* marker css */
+.marker {
+    background-image: url("../images/dealMarker.png");
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
+  
+  .mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
