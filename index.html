@@ -34,7 +34,10 @@
 
             <div class="card-body">
                 <div id='map' style='width: 600px; height: 400px;'></div>
+                <button type="button" class="btn btn-info btn-lg m-2" data-toggle="modal"
+                    data-target="#gasModal">Charging Stations</button>
             </div>
+
         </div>
         <div class="card" style="width: 21.5rem;">
 
@@ -55,9 +58,11 @@
             <div class="card body">
                 <ul class="list-group list-group-flush">
 
-                    <li class="list-group-item item-1">first</li>
-                    <li class="list-group-item item-2">second</li>
-                    <li class="list-group-item item-3">third</li>
+                    <li class="list-group-item item-1">Interest-1</li>
+                    <li class="list-group-item item-2">Interest-2</li>
+                    <li class="list-group-item item-3">Interest-3</li>
+
+
                 </ul>
             </div>
             <div class="card-body">
@@ -72,6 +77,23 @@
         </div>
     </div>
 
+    <div class="modal fade" id="gasModal" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Charging Stations</h4>
+                </div>
+                <div class="modal-body" style="overflow-y:scroll;height:300px">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <footer>
         <div class="jumbotron jumbotron-fluid bottom-jumbo">
