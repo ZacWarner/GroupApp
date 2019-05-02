@@ -135,3 +135,16 @@ $(document).ready(function () {
 
     });
 });
+
+
+document.getElementById("reset").addEventListener("click", function(clear) {
+    category1= ('');
+    category2=('');
+    category3=('');
+    var tmp = $("li.list-group-item");
+tmp[0].innerText="Interest-1";
+tmp[1].innerText="Interest-2";
+tmp[2].innerText="Interest-3";
+categoryCount=0
+$(".slider").empty();
+});
