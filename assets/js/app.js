@@ -155,7 +155,7 @@ $(document).ready(function () {
                         type: 'Feature',
                         geometry: {
                             type: 'Point',
-                            coordinates: [stationsAtBrkpnt[0][0].longitude, stationsAtBrkpnt[0][0].latitude]
+                            coordinates: [stationsAtBrkpnt[i][j].longitude, stationsAtBrkpnt[i][j].latitude]
                         },
                         properties: {
                             title: stationsAtBrkpnt[i][j].station_name,
@@ -164,19 +164,18 @@ $(document).ready(function () {
                     });
 
 
-                }
-            }
+                };
+            };
+
             var geojson = {
                 type: 'FeatureCollection',
                 features: feateresChargeStation,
             };
-
-            console.log("works")
-            console.log("geojson: " + geojson.features);
-
+            console.log("chargestations")
+            console.log(feateresChargeStation);
             // add markers to map
             geojson.features.forEach(function (marker) {
-
+                console.log("inloop" + marker.geometry.coordinates);
                 // create a HTML element for each feature
                 var el = document.createElement('div');
                 el.className = 'markerChargeStation';
@@ -187,8 +186,8 @@ $(document).ready(function () {
                     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                         .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
                     .addTo(map);
-            })
-        })
+            });
+        });
 
     }
 
@@ -279,14 +278,14 @@ $(document).ready(function () {
 });
 
 
-document.getElementById("reset").addEventListener("click", function(clear) {
-    category1= ('');
-    category2=('');
-    category3=('');
+document.getElementById("reset").addEventListener("click", function (clear) {
+    category1 = ('');
+    category2 = ('');
+    category3 = ('');
     var tmp = $("li.list-group-item");
-tmp[0].innerText="Interest-1";
-tmp[1].innerText="Interest-2";
-tmp[2].innerText="Interest-3";
-categoryCount=0
-$(".slider").empty();
+    tmp[0].innerText = "Interest-1";
+    tmp[1].innerText = "Interest-2";
+    tmp[2].innerText = "Interest-3";
+    categoryCount = 0
+    $(".slider").empty();
 });
