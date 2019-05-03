@@ -89,4 +89,14 @@
     text-align: center;
     font-family: 'Open Sans', sans-serif;
   }
+
+  
+  .markerChargeStation {
+    background-image: url("../images/chargeMarker.png");
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
   
