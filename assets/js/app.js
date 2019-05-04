@@ -4,6 +4,8 @@ $(document).ready(function () {
     var category1 = "", category2 = "", category3 = "";
     var locationCoordinates = "38.581021,-121.4939328"; //Setting default to sacramento
     var features = [];
+    //tracks markers to remove
+    var currentMarkers = [];
     var feateresChargeStation = [];
     function populateDealCategory() {
         for (let i = 0; i < dealCategories.length; i++) {
@@ -92,6 +94,7 @@ $(document).ready(function () {
                     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                         .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
                     .addTo(map);
+                currentMarkers.push(el);
             });
 
             $('.slider').slick({
@@ -277,32 +280,29 @@ $(document).ready(function () {
     });
 
     document.getElementById("reset").addEventListener("click", function (clear) {
-        category1 = '';
-        category2 = '';
-        category3 = '';
+        category1 = ('');
+        category2 = ('');
+        category3 = ('');
         var tmp = $("li.list-group-item");
         tmp[0].innerText = "Interest-1";
         tmp[1].innerText = "Interest-2";
         tmp[2].innerText = "Interest-3";
         categoryCount = 0;
-        console.log(categoryCount);
-        $(".slider").empty();
+        $(".Slider").empty();
+        //removes markers for deals
+        if (currentMarkers !== null) {
+            for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                currentMarkers[i].remove();
+            }
+        }
     });
+
+
+
+
+
 
 
 
 });
 
-
-// document.getElementById("reset").addEventListener("click", function (clear) {
-//     category1 = '';
-//     category2 = '';
-//     category3 = '';
-//     var tmp = $("li.list-group-item");
-//     tmp[0].innerText = "Interest-1";
-//     tmp[1].innerText = "Interest-2";
-//     tmp[2].innerText = "Interest-3";
-//     categoryCount = 0;
-//     console.log(categoryCount);
-//     $(".slider").empty();
-// });
