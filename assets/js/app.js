@@ -3,6 +3,8 @@ $(document).ready(function () {
     var categoryCount = 0, brkPnts = [], destLoc = [], stationsAtBrkpnt = [];
     var locationCoordinates = "38.581021,-121.4939328"; //Setting default to sacramento
     var features = [];
+    //tracks markers to remove
+    var currentMarkers = [];
     var feateresChargeStation = [];
     function populateDealCategory() {
         for (let i = 0; i < dealCategories.length; i++) {
@@ -91,6 +93,7 @@ $(document).ready(function () {
                     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                         .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
                     .addTo(map);
+                currentMarkers.push(el);
             });
 
             $('.slider').slick({
@@ -114,20 +117,23 @@ $(document).ready(function () {
                 method: "GET"
             }).then(function (response) {
                 console.log(response);
-                stationsAtBrkpnt.push(response.fuel_stations);
+                if (response.fuel_stations.length > 0) {
+                    stationsAtBrkpnt.push(response.fuel_stations);
+                }
             });
         }
 
         // Build Query for destination
         gasQueryUrl = "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=awKj0iJVNXb0QimB3G77NzbCMl0iZjlwLxVaRcBQ&latitude=" + destLoc[1] + "&longitude=" + destLoc[0] + "&fuel_type=ELEC&limit=5";
-
         // API call to NREL
         $.ajax({
             url: gasQueryUrl,
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            stationsAtBrkpnt.push(response.fuel_stations);
+            if (response.fuel_stations.length > 0) {
+                stationsAtBrkpnt.push(response.fuel_stations);
+            }
 
             $(".modal-body").empty();
             // Populate into app
@@ -284,6 +290,12 @@ $(document).ready(function () {
         categoryCount = 0
         $('.slider').slick('unslick');
         $(".slider").empty();
+        //removes markers for deals
+        if (currentMarkers !== null) {
+            for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                currentMarkers[i].remove();
+            }
+        }
     });
 });
 
