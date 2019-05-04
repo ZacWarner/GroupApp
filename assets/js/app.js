@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     var categoryCount = 0, brkPnts = [], destLoc = [], stationsAtBrkpnt = [];
-    var category1 = "", category2 = "", category3 = "";
     var locationCoordinates = "38.581021,-121.4939328"; //Setting default to sacramento
     var features = [];
     var feateresChargeStation = [];
@@ -277,23 +276,14 @@ $(document).ready(function () {
     });
 
     document.getElementById("reset").addEventListener("click", function (clear) {
-        category1 = ('');
-        category2 = ('');
-        category3 = ('');
+
         var tmp = $("li.list-group-item");
         tmp[0].innerText = "Interest-1";
         tmp[1].innerText = "Interest-2";
         tmp[2].innerText = "Interest-3";
         categoryCount = 0
+        $('.slider').slick('unslick');
         $(".slider").empty();
     });
-
-
-
-
-
-
-
-
 });
 
