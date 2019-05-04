@@ -6,6 +6,15 @@ $(document).ready(function () {
     //tracks markers to remove
     var currentMarkers = [];
     var feateresChargeStation = [];
+
+    //==========Automatic Background Change===================
+
+
+
+    
+
+//===============Automatic Background Change====================
+
     function populateDealCategory() {
         for (let i = 0; i < dealCategories.length; i++) {
             var newOption = $("<option>");

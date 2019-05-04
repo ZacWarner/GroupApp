@@ -4,10 +4,8 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    margin: 3%;
   }
-#body{
-    margin: 10px;
-}
 .card{
     margin: 10px;
     background-color: rgb(69, 41, 223, 0.3);
@@ -65,7 +63,7 @@
 }
 
 .text {
-    background-color: orange;
+    background-color: rgba(224, 148, 6, 0.644);
     color: white;
     font-size: 16px;
     padding: 16px 32px;
