@@ -4,6 +4,9 @@ $(document).ready(function () {
     var category1 = "", category2 = "", category3 = "";
     var locationCoordinates = "38.581021,-121.4939328"; //Setting default to sacramento
     var features = [];
+    //tracks markers to remove
+    var currentMarkers = [];
+    var feateresChargeStation = [];
     function populateDealCategory() {
         for (let i = 0; i < dealCategories.length; i++) {
             var newOption = $("<option>");
@@ -91,6 +94,7 @@ $(document).ready(function () {
                     .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                         .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
                     .addTo(map);
+                currentMarkers.push(el);
             });
 
             $('.slider').slick({
@@ -148,8 +152,44 @@ $(document).ready(function () {
                     newDiv.append(stationName, stationAddr, stationZip, lineBreak);
 
                     $(".modal-body").append(newDiv);
-                }
-            }
+
+                    //zacs marker
+                    feateresChargeStation.push({
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [stationsAtBrkpnt[i][j].longitude, stationsAtBrkpnt[i][j].latitude]
+                        },
+                        properties: {
+                            title: stationsAtBrkpnt[i][j].station_name,
+                            description: stationsAtBrkpnt[i][j].street_address,
+                        }
+                    });
+
+
+                };
+            };
+
+            var geojson = {
+                type: 'FeatureCollection',
+                features: feateresChargeStation,
+            };
+            console.log("chargestations")
+            console.log(feateresChargeStation);
+            // add markers to map
+            geojson.features.forEach(function (marker) {
+                console.log("inloop" + marker.geometry.coordinates);
+                // create a HTML element for each feature
+                var el = document.createElement('div');
+                el.className = 'markerChargeStation';
+
+                // make a marker for each feature and add to the map
+                new mapboxgl.Marker(el)
+                    .setLngLat(marker.geometry.coordinates)
+                    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                        .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                    .addTo(map);
+            });
         });
 
     }
@@ -238,17 +278,31 @@ $(document).ready(function () {
         // Pull info on electric gas feed
         populateElecInfo();
     });
-});
+
+    document.getElementById("reset").addEventListener("click", function (clear) {
+        category1 = ('');
+        category2 = ('');
+        category3 = ('');
+        var tmp = $("li.list-group-item");
+        tmp[0].innerText = "Interest-1";
+        tmp[1].innerText = "Interest-2";
+        tmp[2].innerText = "Interest-3";
+        categoryCount = 0;
+        $(".Slider").empty();
+        //removes markers for deals
+        if (currentMarkers !== null) {
+            for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                currentMarkers[i].remove();
+            }
+        }
+    });
 
 
-document.getElementById("reset").addEventListener("click", function(clear) {
-    category1= ('');
-    category2=('');
-    category3=('');
-    var tmp = $("li.list-group-item");
-tmp[0].innerText="Interest-1";
-tmp[1].innerText="Interest-2";
-tmp[2].innerText="Interest-3";
-categoryCount=0
-$(".slider").empty();
+
+
+
+
+
+
 });
+
