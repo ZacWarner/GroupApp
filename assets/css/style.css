@@ -4,10 +4,8 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  }
-#body{
     margin: 3%;
-}
+  }
 .card{
     margin: 10px;
     background-color: rgb(69, 41, 223, 0.3);
