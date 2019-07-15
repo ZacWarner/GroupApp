@@ -1,6 +1,6 @@
 # GroupApp
 ## Project Title: Discount Destination(s)
-
+A road trip planning site that will give the user directions to a destination, discounts on things their intested in at destination, and charging stations along the route.
 ### Team Members: 
 * Gurpreet Parhar
 * Meena Sivakumar
